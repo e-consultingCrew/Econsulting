@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sharer test</title>
+	<link rel="stylesheet" href="econs-share.css">
+	
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script>
+		/* Si no se cargó jQuery del CDN, cargar la versión local de respaldo */
+		if(typeof window.jQuery == 'undefined')
+			document.write("<script src='<?=$CFG->wwwroot?>/js/jquery-1.8.3.min.js'><\/script>");
+	</script>
+	<script src="jQuery.eConsShare.js"></script>
+
+	<script type="text/javascript">
+		$(function()
+		{
+			$("#sharer").eConsShare({ direccion: "top", idioma: "es" });
+		});
+	</script>
+
+	<style>
+		#sharer { margin-top: 200px; }
+	</style>
+</head>
+<body>
+	<div id="sharer"></div>
+</body>
+</html>

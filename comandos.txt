@@ -1,0 +1,9 @@
+Este es un pequeño texto de los comandos más usados en Sublime:
+
+- Convertir texto a mayusculas: CTRL + K + U
+- Convertir texto a mayusculas: CTRL + K + L
+- Tener dividida la pantalla: ALT + SHIFT + (Cantidad en número a dividir)
+- TAB Negativo: SHIFT + TAB
+- Seleccionar la palabra (repite la selección): CTRL + D
+- Ir a una linea de codigo (Numero): CTRL + G
+- Comentar lineas de codigo: CTRL + ?

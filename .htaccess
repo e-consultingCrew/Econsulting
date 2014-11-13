@@ -1,0 +1,42 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+#tipografías
+<FilesMatch "\.(ttf|otf|woff|eot)$">
+	<IfModule mod_headers.c>
+	        Header set Access-Control-Allow-Origin "*"
+	</IfModule>
+</FilesMatch>
+
+#compresión
+<IfModule mod_deflate.c>
+	SetOutputFilter DEFLATE
+
+	# Don’t compress
+	SetEnvIfNoCase Request_URI \.(?:gif|jp(e|g|eg)|png|GIF|JP(E|G|EG)|PNG)$ no-gzip dont-vary
+	SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar|EXE|T?GZ|ZIP|BZ2|SIT|RAR)$ no-gzip dont-vary
+
+	#Dealing with proxy servers
+	<IfModule mod_headers.c>
+		Header append Vary User-Agent
+	</IfModule>
+</IfModule>
+
+#caducidad cache del navegador
+<ifmodule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault A3600
+	<filesmatch ".(jpeg|JPEG|jpg|JPG|gif|GIF|png|PNG|css|CSS|ico|ICO|js|JS)$">
+		#Header set Cache-Control "max-age=604800, public, must-revalidate"
+		#ExpiresDefault "access plus 5 day"
+	</filesmatch>
+</ifmodule>
+
+#protege los .htaccess, .htpasswd, .ini, .log .js .css .php .html .json
+<FilesMatch "\.(htaccess|htpasswd|ini|log|json)$">
+	#Deny from all
+</FilesMatch>
